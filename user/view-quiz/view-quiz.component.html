@@ -1,0 +1,73 @@
+<!-- <div class="mt20"></div> -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Read the instructions carefully before starting the quiz.</mat-card-title>
+                    <mat-card-subtitle class="mt10">{{quiz.category.title}} Quiz.</mat-card-subtitle>
+                </mat-card-header>
+                <div class="mt10 mb10"><mat-divider></mat-divider></div>
+                <mat-card-content>
+                    <h1>{{quiz.title}} <p style="font-size:small;">{{quiz.description}}</p>
+                    </h1>
+                    <mat-accordion class="example-headers-align">
+                        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Important Instructions
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Read the instructions before starting the quiz.
+                                    <mat-icon>info</mat-icon>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <ul>
+                                <li>This quiz is only for practice purpose.</li>
+                                <li>You can take this quiz any number of times.</li>
+                                <li>You need to submit the quiz within the stipulated time.</li>
+                                <li>There is no negative marking for incorrectly marked questions.</li>
+                                <li>Different set of questions appear each time you take the quiz.</li>
+                                <li>You can download the result PDF at the end of the quiz.</li>
+                            </ul>
+                            <mat-action-row>
+                                <button mat-button color="primary" (click)="nextStep()">Next</button>
+                            </mat-action-row>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Quiz Details
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Important information about the quiz.
+                                    <mat-icon>quiz</mat-icon>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <ul>
+                                <li>Duration of the quiz is <b>{{quiz.numberOfQuestions * 2}} Minutes.</b></li>
+                                <li>There are <b>{{quiz.numberOfQuestions}} questions</b> in this quiz.</li>
+                                <li>Maximum marks of this quiz is <b>{{quiz.maxMarks}} Marks.</b></li>
+                                <li>All questions are of MCQ type.</li>
+                                <li>You cannot resume this test, if interrupted due to any reason.</li>
+                                <li>Changing tabs during the quiz will result in automatically submitting the test.</li>
+                            </ul>
+
+
+                            <mat-action-row>
+                                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                                <button mat-button color="primary" (click)="nextStep()">End</button>
+                            </mat-action-row>
+                        </mat-expansion-panel>
+
+                    </mat-accordion>
+                </mat-card-content>
+                <div class="text-center mt20 mb20">
+                    <button mat-raised-button (click)="startquiz()" color="primary">Start Quiz</button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

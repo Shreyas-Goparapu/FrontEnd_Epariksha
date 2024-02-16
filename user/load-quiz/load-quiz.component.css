@@ -1,0 +1,21 @@
+.ml15 {
+    margin-left: 15px;
+}
+
+.truncate {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.quiz-img{
+    height: 60px;
+    width: 60px;
+}
+
+.quiz-card{
+    height: 200px;
+    width: 100%;
+}

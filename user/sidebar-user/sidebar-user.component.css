@@ -1,0 +1,26 @@
+.menu-items mat-icon {
+    margin-right: 10px; /* Adjust the margin as needed for spacing */
+  }
+
+  .example-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+
+  .sidenav{
+    background-color: #263238;
+    border-radius: 1%;
+  }
+  

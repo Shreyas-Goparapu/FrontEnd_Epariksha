@@ -1,0 +1,138 @@
+<div class="mt20"></div>
+<div class="container-fluid" *ngIf="!isSubmit">
+    <div class="row">
+        <div class="mt10 text-center"></div>
+        <div class="col-md-2 custom-column-gap">
+            Instructions
+        </div>
+        <div class="col-md-8 custom-column-gap">
+            <h1 class="text-center" style="color: white;">Questions of {{questions[0].quiz.title}} Quiz</h1>
+            <mat-card>
+                <mat-card-content *ngIf="questions.length==0">
+                    <div class="mt20"></div>
+                    <div class="text-center"><b>
+                            <h1>No questions available in this quiz.</h1>
+                        </b></div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card *ngFor="let q of questions; let i = index" class="mt10">
+                <mat-card-content *ngIf="q.content!=''">
+                    <p>
+                        <b>Q{{i+1}}.</b> <span class="ml10" [innerHTML]="q.content"></span>
+                    </p>
+                    <mat-radio-group [(ngModel)]="q.selectedAnswer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-radio-button [value]="q.option1"
+                                        [name]="i.toString()">{{q.option1}}</mat-radio-button>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-radio-button [value]="q.option2"
+                                        [name]="i.toString()">{{q.option2}}</mat-radio-button>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-radio-group>
+                    <mat-radio-group [(ngModel)]="q.selectedAnswer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-radio-button [value]="q.option3"
+                                        [name]="i.toString()">{{q.option3}}</mat-radio-button>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-radio-button [value]="q.option4"
+                                        [name]="i.toString()">{{q.option4}}</mat-radio-button>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-radio-group>
+                </mat-card-content>
+            </mat-card>
+            <div class="container text-center mt10 mb10">
+                <button mat-raised-button color="primary" (click)="submitQuiz()">Submit</button>
+            </div>
+        </div>
+        <div class="col-md-2 mt10 custom-column-gap">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title> Time remaining </mat-card-title>
+                    
+                </mat-card-header>
+                <mat-card-content>
+                    <h2 class="text-center">{{ getFormattedTime()}}</h2>
+                    <mat-spinner mode="determinate" color="primary" style="margin: auto"
+                        [value]="(timer && this.questions && this.questions.length ? (timer / (this.questions.length * 2 * 60)) * 100 : 0)"></mat-spinner>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<!-- Show Quiz Result -->
+
+<div class="container-fluid" *ngIf="isSubmit">
+
+    <div class="row">
+        <div class="col-md-2">
+            Instructions
+        </div>
+        <div class="col-md-8">
+            <div class="text-center">
+                <h1 class="text-center" style="color: white;">Result of {{questions[0].quiz.title}} Quiz</h1>
+            </div>
+            <mat-card class="my-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-4 info-col">
+                            <h2>Started On :</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <h2>{{startDate}}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 info-col">
+                            <h2>Completed On :</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <h2>{{endDate}}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 info-col">
+                            <h2>Marks Obtained :</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <h2>{{marksObtained}}/{{questions[0].quiz.maxMarks}}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 info-col">
+                            <h2>Questions attempted :</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <h2>{{attemptedQuestions}}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 info-col">
+                            <h2>Acurracy :</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <h2>{{accuracy}}%</h2>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <div class="container text-center mb10 mt10">
+                    <button mat-raised-button color="primary" class="mr15">Print</button>
+                    <button mat-raised-button color="primary" class="mr15"
+                        [routerLink]="'/user-dashboard/quizzes/' + 0">Home</button>
+                    <button mat-raised-button color="primary" class="mr15" [routerLink]="">Review</button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div class="mb20"></div>
+</div>
