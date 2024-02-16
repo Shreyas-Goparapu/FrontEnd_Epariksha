@@ -1,0 +1,30 @@
+<div class="mt20"></div>
+<mat-sidenav-container [hasBackdrop]="true" class="sidenav">
+    <mat-sidenav mode="side" [(opened)]="_sidenavService.isOpen" class="sidenav_main">
+        <mat-card>
+            <mat-action-list>
+                <div class="menu-items">
+                    <h2 class="text-center">MENU</h2>
+                    <button mat-list-item routerLink='/admin'><mat-icon mat-list-icon>home</mat-icon>Home</button>
+                    <button mat-list-item routerLink='/admin/profile'><mat-icon
+                            mat-list-icon>account_circle</mat-icon>Profile</button>
+                    <button mat-list-item routerLink='/admin/categories'><mat-icon
+                            mat-list-icon>category</mat-icon>Categories</button>
+                    <button mat-list-item routerLink='/admin/add-category'><mat-icon
+                            mat-list-icon>add_circle</mat-icon>Add Categories</button>
+                    <button mat-list-item routerLink='/admin/quizzes'><mat-icon
+                            mat-list-icon>quiz</mat-icon>Quizzes</button>
+                    <button mat-list-item routerLink='/admin/add-quiz'><mat-icon mat-list-icon>add</mat-icon>Add
+                        Quiz</button>
+                </div>
+            </mat-action-list>
+        </mat-card>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<div class="mt20"></div>

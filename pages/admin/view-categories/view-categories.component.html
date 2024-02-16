@@ -1,0 +1,35 @@
+<mat-card class="cat-card">
+    <mat-card-header class="text-center">
+        <div class="text-center"><h2 class="text-center">All Categories</h2></div>
+    </mat-card-header>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+            (click)="getQuizbyCategory(c.cid)" *ngFor="let c of categories">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{c.title}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    Click to see {{c.title}} quizzes.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list-item *ngFor="let quiz of quizzes">
+                {{ quiz.title }}
+                <hr>
+            </mat-list-item>
+            <mat-action-row>
+                <button mat-mini-fab color="primary" matTooltip="View in detail" [routerLink]="'/admin/view-quiz-by-category/' + c.cid">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" (click)="deleteCat(c.cid)" matTooltip="Delete category">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+        <div class="text-center mt10 mb10" style="text-align: center;" >
+            <button mat-raised-button color="primary" routerLink='/admin/add-category'>Add Category</button>
+        </div>
+
+</mat-card>
+

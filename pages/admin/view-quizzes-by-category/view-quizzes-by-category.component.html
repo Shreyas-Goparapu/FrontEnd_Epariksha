@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 class="text-center" style="color: white;" *ngIf="quizzes.length != 0">Available Quizzes in {{catTitle}}</h1>
+    <div class="row">
+        <div class="col-md-6 mb20" *ngFor="let q of quizzes">
+            <mat-card class="quiz-card">
+                <mat-card-header>
+                    <mat-card-title-group>
+                        <mat-card-title>{{q.title}}</mat-card-title>
+                        <mat-card-subtitle>{{q.category.title}}</mat-card-subtitle>
+                        <img mat-card-sm-image src="../../../../assets/images/exam.png">
+                    </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="truncate">{{q.description}}</p>
+                </mat-card-content>
+                <mat-card-footer class="ml15">
+                    <mat-card-subtitle >Maximum Marks : {{q.maxMarks}}</mat-card-subtitle>
+                    <mat-card-subtitle >Total Questions : {{q.numberOfQuestions}}</mat-card-subtitle>
+                </mat-card-footer>
+                <mat-card-actions class="card-actions">
+                    <button class="ml5" [routerLink]="'/admin/view-questions/'+q.qid+'/'+q.title" mat-raised-button color="primary">Questions</button>
+                    <button [routerLink]="'/admin/quiz/'+q.qid" class="ml5" mat-raised-button color="primary">Update</button>
+                    <button class="ml5" mat-raised-button color="primary">Attempts</button>
+                    <button class="mat-fab" mat-fab color="warn" (click)="deleteQuiz(q.qid)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    <mat-card>
+        <mat-card-content *ngIf="quizzes.length == 0">
+            <div class="mt20"></div>
+            <div class="text-center"><b><h1>No quizzes available in {{catTitle}}.</h1></b></div>
+        </mat-card-content>
+    </mat-card>
+    <div class="text-center mt20">
+        <button mat-raised-button routerLink='/admin/add-quiz' color="primary">Add New Quiz</button>
+    </div>
+</div>

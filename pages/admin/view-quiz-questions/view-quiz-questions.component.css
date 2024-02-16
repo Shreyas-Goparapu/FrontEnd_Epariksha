@@ -1,0 +1,14 @@
+.ml15{
+    margin-left: 15px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-start; /* Aligns Button 1 and Button 2 to the left */
+  }
+  
+.card-actions button:nth-child(2) {
+    margin-left: auto; /* Pushes Button 3 to the right */
+    width: 43px; /* Adjust the width as needed */
+    height: 43px;
+  }

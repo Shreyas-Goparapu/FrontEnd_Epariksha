@@ -1,0 +1,54 @@
+<!-- <div class="mt20"></div> -->
+<div class="container">
+    <div class="row">
+        <div class="mt10 text-center"></div>
+        <div class="col-md-12">
+            <h1 class="text-center" style="color: white;">Questions of {{quizTitle}} Quiz</h1>
+            <mat-card>
+                <mat-card-content *ngIf="questions.length==0">
+                    <div class="mt20"></div>
+                    <div class="text-center"><b><h1>No questions available in this quiz.</h1></b></div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card *ngFor="let q of questions; let i = index" class="mt10">
+                <mat-card-content *ngIf="q.content!=''">
+                    <p>
+                        <b>Q{{i+1}}.</b> <span class="ml10" [innerHTML]="q.content"></span>
+                    </p>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><b class="mr5">(A)</b>{{ q.option1}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><b class="mr5">(B)</b>{{ q.option2}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><b class="mr5">(C)</b>{{ q.option3}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><b class="mr5">(D)</b>{{ q.option4}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <p class="mb10"><b>CORRECT ANSWER : </b>{{q.answer}}</p>
+                </mat-card-content>
+                <mat-card-actions class="card-actions" *ngIf="q.content!=''">
+                    <button [routerLink]="'/admin/update-question/'+q.quesId" class="ml5" mat-raised-button color="primary">Update</button>
+                    <button class="mat-fab-delete" mat-fab color="warn" (click)="deleteQuestion(q.quesId)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    <div class="container text-center mt20">
+        <button mat-raised-button color="primary" [routerLink]="'/admin/add-question/'+quizId+'/'+quizTitle">Add Question</button>
+    </div>
+</div>

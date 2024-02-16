@@ -1,0 +1,16 @@
+.ml15{
+    margin-left: 15px;
+}
+.mat-fab{
+    width: 38px; /* Adjust the width as needed */
+    height: 38px;
+    margin-left: 175px;
+}
+
+.truncate {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

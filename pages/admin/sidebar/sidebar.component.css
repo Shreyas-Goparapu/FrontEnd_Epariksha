@@ -1,0 +1,15 @@
+.menu-items mat-icon {
+    margin-right: 10px;
+  }
+
+  .sidenav{
+    background-color: #263238;
+    border-radius: 1%;
+    padding : 10px;
+  }
+  
+  .sidenav_main{
+    border-radius: 1%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
